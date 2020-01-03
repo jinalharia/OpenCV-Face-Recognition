@@ -15,7 +15,8 @@ pip install -r requirements.txt
 ##Usage
 1 Put known images in dataset folder in subfolders with correct name (ensure these photos have only the named person in them)
 2 Put images to test in images folder
-3 First extract embeddings by running:
+3 Create output folder to save pickled models
+4 First extract embeddings by running:
 ```shell
 python extract_embeddings.py --dataset dataset \
 	--embeddings output/embeddings.pickle \
@@ -23,14 +24,14 @@ python extract_embeddings.py --dataset dataset \
 	--embedding-model openface_nn4.small2.v1.t7
 ```
 
-4 Train the model
+5 Train the model
 ```shell
 python train_model.py --embeddings output/embeddings.pickle \
 	--recognizer output/recognizer.pickle \
 	--le output/le.pickle
 ```
 
-5 Run script on actual images
+6 Run script on actual images
 ```shell
 python recognize.py --detector face_detection_model \
 	--embedding-model openface_nn4.small2.v1.t7 \
@@ -39,10 +40,19 @@ python recognize.py --detector face_detection_model \
 	--image images/obama.jpg
 ```
 
-6 To run on a live video stream use
+7 To run on a live video stream use
 ```shell
 python recognize_video.py --detector face_detection_model \
 	--embedding-model openface_nn4.small2.v1.t7 \
 	--recognizer output/recognizer.pickle \
 	--le output/le.pickle
+```
+
+8 To run on folder of images use
+```shell
+python recognize.py --detector face_detection_model \
+	--embedding-model openface_nn4.small2.v1.t7 \
+	--recognizer output/recognizer.pickle \
+	--le output/le.pickle \
+	--images images
 ```
