@@ -108,9 +108,9 @@ for (i, imagePath) in enumerate(imagePaths):
 
 # Create directories for sorted images if they do not exist
 for name in knownNames:
-	if not os.path.exists(os.path.join('sorted_images', name))
-	print("New directory created for: " + name)
-	os.makedirs(os.path.join('sorted_images', name))
+	if not os.path.exists(os.path.join('sorted_images', name)):
+		print("New directory created for: " + name)
+		os.makedirs(os.path.join('sorted_images', name))
 
 # dump the facial embeddings + names to disk
 print("[INFO] serializing {} encodings...".format(total))
